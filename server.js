@@ -26,6 +26,11 @@ app.use('/admin',loginRouter)
 let regRouter=require('./router/regRouter')
 app.use('/admin',regRouter)
 
+// 商品
+let goodsRouter=require('./router/goodsRouter')
+app.use('/goods',goodsRouter)
+
+
 // 监听端口号
 app.listen(2020,()=>{
     console.log('服务器启动成功');
