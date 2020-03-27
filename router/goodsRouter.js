@@ -9,7 +9,7 @@ const goodsModel = require('../db/model/goodsModel')
 // 调用数据库操作
 const {
     findgoodslist,
-    insertgoods 
+    insertgoods
 } = require('../controls/goodsControl')
 
 // 实例化
@@ -19,11 +19,9 @@ const router = express.Router()
 router.get('/goodslist', (req, res) => {
     /**
      * @api {get} /admin/goodslist   管理平台登录界面
-     * @apiName login
-     * @apiGroup User
+     * @apiName  goodslist
+     * @apiGroup goods
      *
-     * @apiParam {String} phoneNum 手机号码.
-     * @apiParam {String} passWord 登录密码.
      *
      * @apiSuccess {String} err 状态码r.
      * @apiSuccess {String} msg  信息提示.
@@ -71,8 +69,8 @@ router.post('/goodsadd', (req, res) => {
 
     /**
      * @api {post} /admin/goodsadd   管理平台登录界面
-     * @apiName login
-     * @apiGroup User
+     * @apiName  goodsadd
+     * @apiGroup goods
      *
      * @apiParam {String} title 食品名.
      * @apiParam {String} desc 食品描述.
@@ -82,9 +80,9 @@ router.post('/goodsadd', (req, res) => {
      * @apiSuccess {String} msg  信息提示.
      */
     insertgoods({
-        title,
-        desc,
-        price
+            title,
+            desc,
+            price
         })
         .then((data) => {
             // console.log('then', data)
