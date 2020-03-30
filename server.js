@@ -30,6 +30,11 @@ app.use('/admin',regRouter)
 let goodsRouter=require('./router/goodsRouter')
 app.use('/goods',goodsRouter)
 
+// 员工
+let employeeRouter=require('./router/employeeRouter')
+app.use('/employee',employeeRouter)
+
+
 
 // 监听端口号
 app.listen(2020,()=>{

@@ -101,6 +101,121 @@ define({ "api": [
   },
   {
     "type": "post",
+    "url": "/employee/employeeadd",
+    "title": "添加员工",
+    "name": "employeeadd",
+    "group": "employee",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>姓名.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "phonenum",
+            "description": "<p>手机号.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "birthdate",
+            "description": "<p>出生日期.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "store",
+            "description": "<p>店铺.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "jobClassification",
+            "description": "<p>职位.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "educationBackground",
+            "description": "<p>学历.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "salary",
+            "description": "<p>薪资.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "err",
+            "description": "<p>状态码r.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>信息提示.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "router/employeeRouter.js",
+    "groupTitle": "employee"
+  },
+  {
+    "type": "get",
+    "url": "/employee/employeelist",
+    "title": "员工列表",
+    "name": "employeelist",
+    "group": "employee",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "err",
+            "description": "<p>状态码r.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>信息提示.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "router/employeeRouter.js",
+    "groupTitle": "employee"
+  },
+  {
+    "type": "post",
     "url": "/admin/goodsadd",
     "title": "管理平台登录界面",
     "name": "goodsadd",
