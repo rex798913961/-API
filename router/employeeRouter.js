@@ -8,8 +8,10 @@ const employeeModel = require('../db/model/employeeModel')
 
 // 调用数据库操作
 const {
-    findemployeelist,
-    insertemployee
+    findemployeelist,//查询列表
+    insertemployee,  //插入数据
+    delemployee,     //删除数据
+    updateemployee   //更新数据
 } = require('../controls/employeeControl')
 
 // 实例化
@@ -80,6 +82,7 @@ router.post('/employeeadd', (req, res) => {
      * @apiParam {String} name 姓名.
      * @apiParam {String} phonenum 手机号.
      * @apiParam {String} birthdate 出生日期.
+     * @apiParam {String} employmentDate g雇佣日期.
      * @apiParam {String} store 店铺.
      * @apiParam {String} jobClassification 职位.
      * @apiParam {String} educationBackground 学历.
@@ -120,6 +123,78 @@ router.post('/employeeadd', (req, res) => {
             console.log("err", err)
         })
 })
+
+router.delete('/delemployee',(req,res)=>{
+    let {_id}=req.body
+     /**
+     * @api {delete} /employee/delemployee   删除员工
+     * @apiName  delemployee
+     * @apiGroup employee
+     *
+     * @apiParam {String} _id  ID.
+     *
+     * @apiSuccess {String} err 状态码r.
+     * @apiSuccess {String} msg  信息提示.
+     */
+    delemployee(_id).then((data)=>{
+        console.log(res);
+        res.send({
+            err: 0,
+            msg: '删除成功'
+        })
+    }).catch((err)=>{
+        res.send({
+            err: -2,
+            msg: '内部错误请重试'+err
+        })
+    })
+})
+router.put('/updateemployee',(req,res)=>{
+    let {
+    _id,
+    name,
+    phonenum,
+    birthdate,
+    employmentDate,
+    store,
+    jobClassification,
+    educationBackground,
+    salary}=req.body
+
+    let obj={name,phonenum,birthdate,employmentDate,store,jobClassification,educationBackground,salary}
+     /**
+     * @api {put} /employee/updateemployee   更新员工信息
+     * @apiName  updateemployee
+     * @apiGroup employee
+     *
+     * @apiParam {String} _id  ID.
+     * @apiParam {String} name 姓名.
+     * @apiParam {String} phonenum 手机号.
+     * @apiParam {String} birthdate 出生日期.
+     * @apiParam {String} employmentDate g雇佣日期.
+     * @apiParam {String} store 店铺.
+     * @apiParam {String} jobClassification 职位.
+     * @apiParam {String} educationBackground 学历.
+     * @apiParam {Number} salary 薪资.
+     *
+     *
+     * @apiSuccess {String} err 状态码r.
+     * @apiSuccess {String} msg  信息提示.
+     */
+    updateemployee(_id,obj).then((data)=>{
+        console.log(res);
+        res.send({
+            err: 0,
+            msg: '更新成功'
+        })
+    }).catch((err)=>{
+        res.send({
+            err: -2,
+            msg: '内部错误请重试'+err
+        })
+    })
+})
+
 // 抛出
 module.exports = router
 

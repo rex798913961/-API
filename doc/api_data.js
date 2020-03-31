@@ -100,6 +100,49 @@ define({ "api": [
     "groupTitle": "User"
   },
   {
+    "type": "delete",
+    "url": "/employee/delemployee",
+    "title": "删除员工",
+    "name": "delemployee",
+    "group": "employee",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "_id",
+            "description": "<p>ID.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "err",
+            "description": "<p>状态码r.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>信息提示.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "router/employeeRouter.js",
+    "groupTitle": "employee"
+  },
+  {
     "type": "post",
     "url": "/employee/employeeadd",
     "title": "添加员工",
@@ -128,6 +171,13 @@ define({ "api": [
             "optional": false,
             "field": "birthdate",
             "description": "<p>出生日期.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "employmentDate",
+            "description": "<p>g雇佣日期.</p>"
           },
           {
             "group": "Parameter",
@@ -190,6 +240,105 @@ define({ "api": [
     "title": "员工列表",
     "name": "employeelist",
     "group": "employee",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "err",
+            "description": "<p>状态码r.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>信息提示.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "router/employeeRouter.js",
+    "groupTitle": "employee"
+  },
+  {
+    "type": "put",
+    "url": "/employee/updateemployee",
+    "title": "更新员工信息",
+    "name": "updateemployee",
+    "group": "employee",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "_id",
+            "description": "<p>ID.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>姓名.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "phonenum",
+            "description": "<p>手机号.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "birthdate",
+            "description": "<p>出生日期.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "employmentDate",
+            "description": "<p>g雇佣日期.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "store",
+            "description": "<p>店铺.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "jobClassification",
+            "description": "<p>职位.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "educationBackground",
+            "description": "<p>学历.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "salary",
+            "description": "<p>薪资.</p>"
+          }
+        ]
+      }
+    },
     "success": {
       "fields": {
         "Success 200": [
