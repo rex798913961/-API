@@ -7,6 +7,7 @@ let EmployeeSchema=new mongoose.Schema({
     name:{type:String},
     phonenum:{type:String},
     birthdate:{type:String},
+    employmentDate:{type:String},
     store:{type:String},
     jobClassification:{type:String},
     educationBackground:{type:String},
