@@ -11,7 +11,8 @@ const {
     findemployeelist,//查询列表
     insertemployee,  //插入数据
     delemployee,     //删除数据
-    updateemployee   //更新数据
+    updateemployee,   //更新数据
+    employeeone
 } = require('../controls/employeeControl')
 
 // 实例化
@@ -29,6 +30,42 @@ router.get('/employeelist', (req, res) => {
      * @apiSuccess {String} msg  信息提示.
      */
     findemployeelist()
+        .then((data) => {
+            // console.log('then', data)
+            if (data.length >= 1) {
+                res.send({
+                    err: 0,
+                    msg: data
+                })
+            } else {
+                res.send({
+                    err: -1,
+                    msg: 'err'
+                })
+            }
+        })
+        .catch((err) => {
+            res.send({
+                err: -2,
+                msg: '内部错误请重试'
+            })
+            console.log("err", err)
+        })
+})
+// id搜索
+router.get('/employeeone', (req, res) => {
+    let _id= req.query._id
+    console.log({_id});
+    /**
+     * @api {get} /employee/employeeone   关键字搜索
+     * @apiName  employeeone
+     * @apiGroup employee
+     *
+     *
+     * @apiSuccess {String} err 状态码r.
+     * @apiSuccess {String} msg  信息提示.
+     */
+    employeeone({_id})
         .then((data) => {
             // console.log('then', data)
             if (data.length >= 1) {
@@ -125,7 +162,9 @@ router.post('/employeeadd', (req, res) => {
 })
 
 router.delete('/delemployee',(req,res)=>{
-    let {_id}=req.body
+    let _id=req.body._id
+    console.log(req.body);
+    
      /**
      * @api {delete} /employee/delemployee   删除员工
      * @apiName  delemployee
@@ -137,10 +176,10 @@ router.delete('/delemployee',(req,res)=>{
      * @apiSuccess {String} msg  信息提示.
      */
     delemployee(_id).then((data)=>{
-        console.log(res);
+        
         res.send({
             err: 0,
-            msg: '删除成功'
+            msg: '删除成功'+data
         })
     }).catch((err)=>{
         res.send({
@@ -150,18 +189,12 @@ router.delete('/delemployee',(req,res)=>{
     })
 })
 router.put('/updateemployee',(req,res)=>{
-    let {
-    _id,
-    name,
-    phonenum,
-    birthdate,
-    employmentDate,
-    store,
-    jobClassification,
-    educationBackground,
-    salary}=req.body
-
+    let {_id}=req.body
+    // let obj={_id,...values}
+    let {name,phonenum,birthdate,employmentDate,store,jobClassification,educationBackground,salary}=req.body
     let obj={name,phonenum,birthdate,employmentDate,store,jobClassification,educationBackground,salary}
+    console.log(obj);
+    
      /**
      * @api {put} /employee/updateemployee   更新员工信息
      * @apiName  updateemployee
@@ -182,7 +215,7 @@ router.put('/updateemployee',(req,res)=>{
      * @apiSuccess {String} msg  信息提示.
      */
     updateemployee(_id,obj).then((data)=>{
-        console.log(res);
+        // console.log(data);
         res.send({
             err: 0,
             msg: '更新成功'

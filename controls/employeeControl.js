@@ -23,7 +23,13 @@ let delemployee=async (_id)=>{
 
 // 更新数据
 let updateemployee=async (_id,obj)=>{
-    let result = await EmployeeModel.updateOne({_id},obj)
+    let result = await EmployeeModel.update({_id},obj)
+    return result
+}
+
+// 关键字搜索
+let employeeone=async (obj) => {
+    let result = await EmployeeModel.find(obj)
     return result
 }
 
@@ -34,5 +40,6 @@ module.exports = {
     findemployeelist,
     insertemployee,
     delemployee,
-    updateemployee
+    updateemployee,
+    employeeone
 }
