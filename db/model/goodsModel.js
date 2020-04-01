@@ -6,7 +6,10 @@ const mongoose=require('mongoose')
 let GoodsSchema=new mongoose.Schema({
     title:{type:String},
     desc:{type:String},
-    price:{type:Number}
+    price:{type:Number},
+    seller:{type:String},
+    path:{type:String},
+    state:{type:String},
 })
 
 // 将schema对象和数据集合进行关联

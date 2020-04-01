@@ -30,6 +30,9 @@ app.use('/admin',regRouter)
 let goodsRouter=require('./router/goodsRouter')
 app.use('/goods',goodsRouter)
 
+// 图片上传
+let uploadRouter = require('./router/uploadRouter')
+app.use('/upload',uploadRouter)
 
 // 监听端口号
 app.listen(2020,()=>{
