@@ -33,6 +33,11 @@ app.use('/goods',goodsRouter)
 // 图片上传
 let uploadRouter = require('./router/uploadRouter')
 app.use('/upload',uploadRouter)
+// 员工
+let employeeRouter=require('./router/employeeRouter')
+app.use('/employee',employeeRouter)
+
+
 
 // 监听端口号
 app.listen(2020,()=>{

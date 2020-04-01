@@ -47,7 +47,6 @@ router.post('/login', (req, res) => {
             passWord
         })
         .then((data) => {
-            // console.log('then', data)
             if (data.length == 1) {
                 res.send({
                     err: 0,
